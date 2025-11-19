@@ -117,7 +117,7 @@ header h1 {
     transition: .2s;
     text-decoration: none;
     position: relative;
-    text-color: #FFFFFF;
+    color: #111;
     display: block;
 }
 
