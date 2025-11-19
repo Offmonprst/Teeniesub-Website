@@ -11,34 +11,6 @@ body {
     overflow-x: hidden;
 }
 
-/* === LIGHT MODE === */
-body.light-mode {
-    background: #f6f6f6;
-    color: #333;
-}
-
-body.light-mode header {
-    background: #ff78c9;
-}
-
-body.light-mode .menu-box {
-    background: #ff78c9;
-}
-
-body.light-mode .photo-card {
-    background: white;
-    color: #333;
-    box-shadow: 0 4px 12px rgba(255, 0, 150, 0.25);
-}
-
-body.light-mode footer {
-    background: #ff78c9;
-}
-
-body.light-mode .sosmed a {
-    color: #333;
-}
-
 /* === BUBBLE ANIMATION BG === */
 body::before {
     content: "";
