@@ -75,14 +75,23 @@ header h1 {
 }
 
 .header-btns button {
+    width: 42px;          /* ukuran fix */
+    height: 42px;         /* ukuran fix */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: white;
     border: none;
-    padding: 10px;
-    margin-left: 8px;
-    border-radius: 50%;
-    font-size: 16px;
+    border-radius: 50%;   /* dijamin bulat */
+    font-size: 18px;
     cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: .2s;
 }
+
+.header-btns button:hover {
+    transform: scale(1.08);
+    }
 
 /* === MENU TOGGLE === */
 .menu-box {
