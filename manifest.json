@@ -1,0 +1,13 @@
+{
+  "name": "Teeniesub Indo",
+  "short_name": "Teeniesub",
+  "icons": [
+    {
+      "src": "/image.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}
