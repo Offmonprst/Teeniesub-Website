@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #111;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* === LIGHT MODE === */
+body.light-mode {
+    background: #f6f6f6;
+    color: #333;
+}
+
+body.light-mode header {
+    background: #ff78c9;
+}
+
+body.light-mode .menu-box {
+    background: #ff78c9;
+}
+
+body.light-mode .photo-card {
+    background: white;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(255, 0, 150, 0.25);
+}
+
+body.light-mode footer {
+    background: #ff78c9;
+}
+
+body.light-mode .sosmed a {
+    color: #333;
+}
+
+/* === BUBBLE ANIMATION BG === */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, #ff69b4 1px, transparent 2px);
+    background-size: 40px 40px;
+    opacity: .12;
+    animation: bubbleMove 6s linear infinite;
+}
+
+@keyframes bubbleMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-40px); }
+}
+
+/* === HEADER === */
+header {
+    background: #ff4da6;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 20px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.header-btns button {
+    background: white;
+    border: none;
+    padding: 10px;
+    margin-left: 8px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* === MENU TOGGLE === */
+.menu-box {
+    background: #ff4da6;
+    width: 70%;
+    max-width: 260px;
+    position: fixed;
+    right: -300px;
+    top: 75px;
+    padding: 20px;
+    border-radius: 20px 0 0 20px;
+    transition: .3s;
+    z-index: 20;
+}
+
+.menu-box.active {
+    right: 0;
+}
+
+.menu-box ul {
+    list-style: none;
+}
+
+.menu-box li {
+    margin: 15px 0;
+}
+
+.menu-box a {
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.menu-box i {
+    margin-right: 8px;
+}
+
+/* === GALLERY === */
+.gallery {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.photo-card {
+    background: #222;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(255, 0, 128, 0.3);
+    transition: .2s;
+    text-decoration: none;
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.photo-card:hover {
+    transform: scale(1.03);
+}
+
+/* GRID MODE */
+.grid-active {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* === FOOTER === */
+footer {
+    background: #ff4da6;
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 20px 20px 0 0;
+}
+
+footer h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sosmed a {
+    color: white;
+    font-size: 25px;
+    margin-right: 15px;
+}
