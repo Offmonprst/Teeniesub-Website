@@ -1,6 +1,5 @@
 {
-  "error": {
-    "404": "/404/index.html",
-    "403": "/403/index.html"
-  }
+  "routes": [
+    { "src": "/(.*)", "dest": "/404/index.html", "status": 404 }
+  ]
 }
