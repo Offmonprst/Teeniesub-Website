@@ -18,6 +18,11 @@ body {
     animation: floatUp 10s infinite ease-in;
 }
 
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: .6; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
 /* BUBBLE BACKGROUND */
 body::before {
     content: "";
