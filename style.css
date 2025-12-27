@@ -109,6 +109,133 @@ header h1 {
     gap: 20px;
 }
 
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+#loading-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ===== BRAND TEXT ===== */
+.brand {
+    display: flex;
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    z-index: 10;
+}
+
+.teeniesubs {
+    color: #ff4da6;
+    opacity: 0;
+    animation: slideRight 1.2s ease forwards;
+}
+
+.indo {
+    color: #ff4da6;
+    margin-left: 10px;
+    opacity: 0;
+    animation: slideLeft 1.2s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* ===== LOADING TEXT ===== */
+.loading-text {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.6);
+    z-index: 10;
+}
+
+.loading-text span {
+    animation: dots 1.4s infinite;
+}
+
+.loading-text span:nth-child(2) { animation-delay: .2s; }
+.loading-text span:nth-child(3) { animation-delay: .4s; }
+
+/* ===== FLOATING CHARACTERS ===== */
+.floating-char {
+    position: fixed;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.floating-char img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.2));
+}
+
+/* POSITIONS */
+.char-top-left {
+    top: 8%;
+    left: 2%;
+    width: 96px;
+    height: 96px;
+}
+
+.char-top-right {
+    top: 10%;
+    right: 2%;
+    width: 112px;
+    height: 112px;
+}
+
+.char-bottom-left {
+    bottom: 12%;
+    left: 3%;
+    width: 112px;
+    height: 112px;
+}
+
+.char-bottom-right {
+    bottom: 8%;
+    right: 3%;
+    width: 96px;
+    height: 96px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideRight {
+    from { transform: translateX(-40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dots {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* ===== MAIN CONTENT ===== */
+#content {
+    display: none;
+    padding: 40px;
+    }
 .photo-card {
     background: #FFFFFF;
     padding: 10px;
