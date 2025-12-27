@@ -11,6 +11,13 @@ body {
     overflow-x: hidden;
 }
 
+.bubble-bg .bubble {
+    position: absolute;
+    background: #ff4da6; /* Pink lembut */
+    border-radius: 50%;
+    animation: floatUp 10s infinite ease-in;
+}
+
 /* BUBBLE BACKGROUND */
 body::before {
     content: "";
