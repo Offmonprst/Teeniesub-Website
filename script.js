@@ -11,10 +11,10 @@ menuBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("click", e => {
-fetch('Episode.json')
+fetch('https://teeniesubs.xyz/Episode.json')
   .then(res => res.json())
   .then(data => {
-    data.gallery.forEach((item)=> {
+    data.gallery.forEach((item) => {
       card.href = 'https://teeniesubs.xyz/Episode/' + item.url;
       card.className = 'photo-card';
 
