@@ -4,6 +4,8 @@ const menuBox = document.getElementById("menuBox");
 const loader = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 const gallery = document.getElementById('gallery');
+const card = document.createElement('a');
+
 menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
