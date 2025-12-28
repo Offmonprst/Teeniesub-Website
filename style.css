@@ -1,3 +1,4 @@
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
@@ -11,25 +12,24 @@ body {
     overflow-x: hidden;
 }
 
-/* === BUBBLE ANIMATION BG === */
+/* ================= BUBBLE BG ================= */
 body::before {
+    content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: radial-gradient(circle, #ff69b4 1px, transparent 2px);
     background-size: 40px 40px;
     opacity: .12;
     animation: bubbleMove 6s linear infinite;
+    z-index: -1;
 }
 
 @keyframes bubbleMove {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-40px); }
+    from { transform: translateY(0); }
+    to   { transform: translateY(-40px); }
 }
 
-/* === HEADER === */
+/* ================= HEADER ================= */
 header {
     background: #ff4da6;
     padding: 12px 18px;
@@ -40,6 +40,21 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+
+    /* animasi */
+    animation: headerDown 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes headerDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 header h1 {
@@ -48,14 +63,14 @@ header h1 {
 }
 
 .header-btns button {
-    width: 42px;          /* ukuran fix */
-    height: 42px;         /* ukuran fix */
+    width: 42px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: white;
     border: none;
-    border-radius: 50%;   /* dijamin bulat */
+    border-radius: 50%;
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
@@ -64,9 +79,9 @@ header h1 {
 
 .header-btns button:hover {
     transform: scale(1.08);
-    }
+}
 
-/* === MENU TOGGLE === */
+/* ================= MENU ================= */
 .menu-box {
     background: #ff4da6;
     width: 70%;
@@ -80,17 +95,11 @@ header h1 {
     z-index: 20;
 }
 
-.menu-box.active {
-    right: 0;
-}
+.menu-box.active { right: 0; }
 
-.menu-box ul {
-    list-style: none;
-}
+.menu-box ul { list-style: none; }
 
-.menu-box li {
-    margin: 15px 0;
-}
+.menu-box li { margin: 15px 0; }
 
 .menu-box a {
     color: white;
@@ -98,11 +107,9 @@ header h1 {
     text-decoration: none;
 }
 
-.menu-box i {
-    margin-right: 8px;
-}
+.menu-box i { margin-right: 8px; }
 
-/* === GALLERY === */
+/* ================= GALLERY ================= */
 .gallery {
     padding: 20px;
     display: grid;
@@ -110,6 +117,53 @@ header h1 {
     gap: 20px;
 }
 
+.grid-active {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ================= PHOTO CARD ================= */
+.photo-card {
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(255, 0, 128, 0.3);
+    text-decoration: none;
+    color: #111;
+    display: block;
+    transition: .2s;
+
+    /* animasi */
+    opacity: 0;
+    transform: scale(0.9);
+    animation: zoomIn 0.6s ease forwards;
+    will-change: transform, opacity;
+}
+
+.photo-card:hover {
+    transform: scale(1.03);
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+@keyframes zoomIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* stagger animation */
+.photo-card:nth-child(1) { animation-delay: .1s; }
+.photo-card:nth-child(2) { animation-delay: .2s; }
+.photo-card:nth-child(3) { animation-delay: .3s; }
+.photo-card:nth-child(4) { animation-delay: .4s; }
+.photo-card:nth-child(5) { animation-delay: .5s; }
+
+/* ================= LOADING ================= */
 #loading-screen {
     position: fixed;
     inset: 0;
@@ -127,14 +181,13 @@ header h1 {
     pointer-events: none;
 }
 
-/* ===== BRAND TEXT ===== */
+/* ================= BRAND ================= */
 .brand {
     display: flex;
     font-size: 42px;
     font-weight: bold;
     letter-spacing: 3px;
     margin-bottom: 12px;
-    z-index: 10;
 }
 
 .teeniesubs {
@@ -151,12 +204,11 @@ header h1 {
     animation-delay: 0.2s;
 }
 
-/* ===== LOADING TEXT ===== */
+/* ================= LOADING TEXT ================= */
 .loading-text {
     font-size: 14px;
     letter-spacing: 2px;
     color: rgba(0,0,0,0.6);
-    z-index: 10;
 }
 
 .loading-text span {
@@ -166,7 +218,7 @@ header h1 {
 .loading-text span:nth-child(2) { animation-delay: .2s; }
 .loading-text span:nth-child(3) { animation-delay: .4s; }
 
-/* ===== FLOATING CHARACTERS ===== */
+/* ================= FLOATING CHAR ================= */
 .floating-char {
     position: fixed;
     pointer-events: none;
@@ -180,7 +232,6 @@ header h1 {
     filter: drop-shadow(0 8px 10px rgba(0,0,0,0.2));
 }
 
-/* POSITIONS */
 .char-top-left {
     top: 8%;
     left: 2%;
@@ -209,68 +260,28 @@ header h1 {
     height: 96px;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes slideRight {
-    from { transform: translateX(-40px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideLeft {
-    from { transform: translateX(40px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes dots {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-@keyframes floating {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
-}
-
-/* ===== MAIN CONTENT ===== */
-#content {
-    display: none;
-}
-
-.photo-card {
-    background: #FFFFFF;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(255, 0, 128, 0.3);
-    transition: .2s;
-    text-decoration: none;
-    position: relative;
-    color: #111;
-    display: block;
-}
-
-.photo-card img {
-    width: 100%;
-    border-radius: 10px;
-    pointer-events: none;
-}
-
-.photo-card:hover {
-    transform: scale(1.03);
-}
-
-/* GRID MODE */
-.grid-active {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* === FOOTER === */
+/* ================= FOOTER ================= */
 footer {
-    position: relative;
     background: #ff4da6;
     margin-top: 40px;
     padding: 25px;
     border-radius: 20px 20px 0 0;
+    position: relative;
+
+    animation: footerUp 0.8s ease-out forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+@keyframes footerUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 footer h2 {
@@ -282,4 +293,32 @@ footer h2 {
     color: white;
     font-size: 25px;
     margin-right: 15px;
-    }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes slideRight {
+    from { transform: translateX(-40px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(40px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dots {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes floating {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= CONTENT ================= */
+#content {
+    display: none;
+}
