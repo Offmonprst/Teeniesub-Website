@@ -57,7 +57,8 @@ window.addEventListener("load", () => {
         setTimeout(() => {
             loader.style.display = "none";
             content.style.display = "block";
-            history.pushState(null, "", "/Episode");
-        }, 800);
+            if (location.pathname !== "/Episode") {
+		    history.pushState(null, "", "/Episode");
+			}
     }, 3000);
 });
