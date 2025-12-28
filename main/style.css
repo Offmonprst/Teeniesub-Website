@@ -245,6 +245,11 @@ footer h2 {
 }
 
 /* ================= PERFORMANCE ================= */
-* {
+header,
+.detail-container,
+.detail-photo,
+.alt-btn,
+.share-btn,
+footer {
     will-change: transform, opacity;
 }
