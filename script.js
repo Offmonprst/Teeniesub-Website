@@ -60,5 +60,6 @@ window.addEventListener("load", () => {
             if (location.pathname !== "/Episode") {
 		    history.pushState(null, "", "/Episode");
 			}
+        }, 800);
     }, 3000);
 });
