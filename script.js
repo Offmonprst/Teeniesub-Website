@@ -10,10 +10,11 @@ menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
+document.addEventListener("click", e => {
 fetch('https://teeniesubs.xyz/Episode.json')
   .then(res => res.json())
   .then(data => {
-    data.gallery.forEach(item => {
+    data.gallery.forEach((item)=> {
       card.href = item.url;
       card.className = 'photo-card';
 
@@ -22,7 +23,6 @@ fetch('https://teeniesubs.xyz/Episode.json')
         <h3>Eps: ${item.episode.toString().padStart(2, '0')} || ${item.title}</h3>
         <p>${item.date}</p>
       `;
-
       gallery.appendChild(card);
     });
   })
@@ -30,7 +30,8 @@ fetch('https://teeniesubs.xyz/Episode.json')
     console.error('Gagal load episode:', err);
     apiList.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
   });
-  
+});
+
 window.addEventListener("load", () => {
     setTimeout(() => {
         loader.classList.add("hide");
