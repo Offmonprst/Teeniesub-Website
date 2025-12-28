@@ -28,7 +28,7 @@ fetch('Episode.json')
   })
   .catch(err => {
     console.error('Gagal load episode:', err);
-    apiList.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
+    gallery.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
   });
 });
 
