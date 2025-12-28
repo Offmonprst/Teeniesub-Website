@@ -15,7 +15,7 @@ fetch('https://teeniesubs.xyz/Episode.json')
   .then(res => res.json())
   .then(data => {
     data.gallery.forEach((item) => {
-      card.href = 'https://teeniesubs.xyz/Episode/' + item.url;
+      card.href = 'https://teeniesubs.xyz' + item.url;
       card.className = 'photo-card';
 
       card.innerHTML = `
