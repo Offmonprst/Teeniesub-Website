@@ -24,7 +24,7 @@ function loadApis() {
             <h3>Eps: ${category.episode} || ${category.title}</h3>
             <p>${category.date}</p>
         </a>`
-        )};
+        });
        gallery.innerHTML = html;
 }
 
