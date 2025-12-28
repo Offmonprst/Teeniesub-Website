@@ -18,15 +18,13 @@ fetch('https://teeniesubs.xyz/Episode.json')
     data.gallery.forEach((item) => {
       card.href = 'https://teeniesubs.xyz' + item.url;
       card.className = 'photo-card';
-
        html += `
         <img src="${item.image}" alt="Episode ${item.episode}">
         <h3>Eps: ${item.episode.toString().padStart(2, '0')} || ${item.title}</h3>
         <p>${item.date}</p>
       `;
-      
-       gallery.innerHTML = html;
     });
+     gallery.innerHTML = html;
   })
   .catch(err => {
     console.error('Gagal load episode:', err);
