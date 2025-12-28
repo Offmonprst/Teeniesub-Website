@@ -16,11 +16,14 @@ body::before {
     content: "";
     position: fixed;
     top: 0; left: 0;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, #ff69b4 1px, transparent 2px);
     background-size: 40px 40px;
     opacity: .12;
     animation: bubbleMove 6s linear infinite;
+    z-index: 0;
+    pointer-events: none;
 }
 
 @keyframes bubbleMove {
@@ -126,6 +129,12 @@ header h1 {
     pointer-events: none;
 }
 
+/* pastikan isi loading di atas semuanya */
+#loading-screen * {
+    position: relative;
+    z-index: 2;
+}
+
 /* ===== BRAND TEXT ===== */
 .brand {
     display: flex;
@@ -170,6 +179,7 @@ header h1 {
     position: fixed;
     pointer-events: none;
     animation: floating 4s ease-in-out infinite;
+    z-index: 1;
 }
 
 .floating-char img {
@@ -234,7 +244,6 @@ header h1 {
 /* ===== MAIN CONTENT ===== */
 #content {
     display: none;
-    padding: 40px;
     }
 .photo-card {
     background: #FFFFFF;
