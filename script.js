@@ -10,7 +10,7 @@ menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
-fetch('Episode.json')
+fetch('https://teeniesubs.xyz/Episode.json')
   .then(res => res.json())
   .then(data => {
     data.gallery.forEach(item => {
@@ -28,6 +28,7 @@ fetch('Episode.json')
   })
   .catch(err => {
     console.error('Gagal load episode:', err);
+    apiList.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
   });
   
 window.addEventListener("load", () => {
