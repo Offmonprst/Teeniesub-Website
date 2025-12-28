@@ -111,30 +111,35 @@ button:hover,
     background: #ff4da6;
     width: 70%;
     max-width: 260px;
-
     position: fixed;
-    right: -100%;
-    top: 0;
-
-    height: 100vh;
-    padding: 90px 20px 20px;
-
+    right: -300px;
+    top: 75px;
+    padding: 20px;
     border-radius: 20px 0 0 20px;
-    transition: right .35s ease;
-    z-index: 1001;
+    transition: .3s;
+    z-index: 20;
 }
 
 .menu-box.active {
     right: 0;
 }
 
-.menu-box ul { list-style: none; }
-.menu-box li { margin: 15px 0; }
+.menu-box ul {
+    list-style: none;
+}
+
+.menu-box li {
+    margin: 15px 0;
+}
 
 .menu-box a {
     color: white;
     font-size: 17px;
     text-decoration: none;
+}
+
+.menu-box i {
+    margin-right: 8px;
 }
 
 /* ================= WARNING ================= */
