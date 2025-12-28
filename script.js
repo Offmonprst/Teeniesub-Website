@@ -3,11 +3,31 @@ const menuBtn = document.getElementById("menuBtn");
 const menuBox = document.getElementById("menuBox");
 const loader = document.getElementById("loading-screen");
 const content = document.getElementById("content");
-
+const gallery = document.getElementById('gallery');
 menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
+fetch('Episode.json')
+  .then(res => res.json())
+  .then(data => {
+    data.gallery.forEach(item => {
+      card.href = item.url;
+      card.className = 'photo-card';
+
+      card.innerHTML = `
+        <img src="${item.image}" alt="Episode ${item.episode}">
+        <h3>Eps: ${item.episode.toString().padStart(2, '0')} || ${item.title}</h3>
+        <p>${item.date}</p>
+      `;
+
+      gallery.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error('Gagal load episode:', err);
+  });
+  
 window.addEventListener("load", () => {
     setTimeout(() => {
         loader.classList.add("hide");
