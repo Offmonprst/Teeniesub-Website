@@ -12,24 +12,19 @@ menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
-fetch('https://teeniesubs.xyz/Episode.json')
-  .then(res => res.json())
-  .then(data => {
-    data.gallery.forEach((item) => {
-      card.href = 'https://teeniesubs.xyz' + item.url;
-      card.className = 'photo-card';
-       html += `
-        <img src="${item.image}" alt="Episode ${item.episode}">
-        <h3>Eps: ${item.episode.toString().padStart(2, '0')} || ${item.title}</h3>
-        <p>${item.date}</p>
-      `;
-    });
-     gallery.innerHTML = html;
-  })
-  .catch(err => {
-    console.error('Gagal load episode:', err);
-    gallery.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
-  });
+function loadApis() {
+	if (!apiData || !apiData.categories) {
+                gallery.innerHTML = '<p class="text-center text-blue-400">No API data loaded.</p>';
+                return;
+            }
+            apiData.gallery.forEach((category) => {
+            html += `
+        <a href="https://teeniesubs.xyz${category.url}"class="photo-card">
+            <img src="${category.image}" alt="">
+            <h3>Eps: ${category.episode} || ${category.title}</h3>
+            <p>${category.date}</p>
+        </a>`
+}
 
 window.addEventListener("load", () => {
     setTimeout(() => {
@@ -40,3 +35,20 @@ window.addEventListener("load", () => {
         }, 800);
     }, 3000);
 });
+
+document.addEventListener("click", e => {
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('Episode.json')
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load apis.json');
+                    return res.json();
+                })
+                .then(data => {
+                    apiData = data;
+                    loadApis();
+                })
+                .catch(err => {
+                    console.error(err);
+                    gallery.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek iyah.json di server.</p>';
+                });
+        });
