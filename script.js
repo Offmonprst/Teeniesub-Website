@@ -4,13 +4,14 @@ const menuBox = document.getElementById("menuBox");
 const loader = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 const gallery = document.getElementById('gallery');
-const card = document.createElement('a');
+
+let apiData = null;
+let html = '';
 
 menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
-document.addEventListener("click", e => {
 fetch('https://teeniesubs.xyz/Episode.json')
   .then(res => res.json())
   .then(data => {
@@ -18,19 +19,19 @@ fetch('https://teeniesubs.xyz/Episode.json')
       card.href = 'https://teeniesubs.xyz' + item.url;
       card.className = 'photo-card';
 
-      card.innerHTML = `
+       html += `
         <img src="${item.image}" alt="Episode ${item.episode}">
         <h3>Eps: ${item.episode.toString().padStart(2, '0')} || ${item.title}</h3>
         <p>${item.date}</p>
       `;
-      gallery.appendChild(card);
+      
+       gallery.innerHTML = html;
     });
   })
   .catch(err => {
     console.error('Gagal load episode:', err);
     gallery.innerHTML = '<p class="text-center text-red-400">Gagal memuat data API. Cek Episode.json di server.</p>';
   });
-});
 
 window.addEventListener("load", () => {
     setTimeout(() => {
