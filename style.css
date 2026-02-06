@@ -331,6 +331,11 @@ footer h2 {
         0 0 14px rgba(255, 77, 166, 0.4);
 }
 
+.center-text {
+    font-size: 18px;
+    opacity: 0.9;
+    color: #ff4fa1;
+}
 
 /* ================= KEYFRAMES ================= */
 @keyframes slideRight {
