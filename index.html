@@ -48,12 +48,22 @@
 <div id="content">
     <!-- HEADER -->
     <header>
-        <h1>Teeniesub indo</h1>
+    <h1 id="headerTitle">Teeniesub indo</h1>
 
-        <div class="header-btns">
-            <button id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
+    <div class="header-search">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Cari episode..."
+        >
+        <button id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="header-btns">
+        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+</header>
 
     <!-- TOGGLE MENU -->
     <nav id="menuBox" class="menu-box">
