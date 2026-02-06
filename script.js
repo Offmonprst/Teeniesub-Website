@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 });
 
+window.addEventListener("scroll", () => {
+    searchBox.classList.remove("active");
+    headerTitle.classList.remove("hide");
+});
+
 // ================= LOADING SCREEN =================
 window.addEventListener("load", () => {
     setTimeout(() => {
