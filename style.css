@@ -337,7 +337,8 @@ header {
 
 /* ================= FOOTER ================= */
 footer {
-    text-align: center;
+    color: #ff4fa1;
+    font-weight: bold;
     color: #fff;
     width: 100vw;
     position: relative;
