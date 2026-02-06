@@ -337,6 +337,7 @@ header {
 
 footer {
     animation: footerUp 0.8s ease-out forwards;
+    margin-top: 40px;
     opacity: 0;
     will-change: transform, opacity;
 }
