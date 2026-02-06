@@ -7,9 +7,6 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
     background: #FFFFFF;
     color: white;
     overflow-x: hidden;
@@ -338,16 +335,15 @@ header {
     height: 96px;
 }
 
+/* ================= FOOTER ================= */
 footer {
-    width: 100vw;               /* 🔑 full layar */
-    margin: 40px 0 0 0;         /* hilang margin samping */
-    padding: 25px 20px;
-
     background: #ff4da6;
+    width: 100vw;
+    margin: 40px 0 0 0;  
+    margin-top: 40px;
+    padding: 25px;
     border-radius: 20px 20px 0 0;
-
     position: relative;
-    transform: translateX(-50%); /* 🔑 anti body padding */
 
     animation: footerUp 0.8s ease-out forwards;
     opacity: 0;
@@ -393,6 +389,7 @@ footer h2 {
     opacity: 0.9;
     color: #ff4fa1;
     font-weight: bold;
+    text-align: center;
 }
 
 /* ================= KEYFRAMES ================= */
