@@ -339,12 +339,10 @@ header {
 footer {
     background: #ff4da6;
     width: 100vw;
-    margin: 40px 0 0 0;  
-    margin-top: 40px;
     padding: 25px;
     border-radius: 20px 20px 0 0;
     position: relative;
-
+    padding-bottom: 120px;
     animation: footerUp 0.8s ease-out forwards;
     opacity: 0;
     will-change: transform, opacity;
