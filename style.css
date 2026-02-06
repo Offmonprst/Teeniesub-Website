@@ -339,8 +339,7 @@ header {
 }
 
 footer {
-    width: 100vw;               /* 🔑 full layar */
-    margin: 40px 0 0 0;         /* hilang margin samping */
+    width: 100vw;
     padding: 25px 20px;
 
     background: #ff4da6;
@@ -369,35 +368,27 @@ footer {
 footer h2 {
     font-size: 20px;
     font-weight: 600;
-    text-align: center;
-    color: #fff;
-}
-
-.sosmed {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
 }
 
 .sosmed a {
+    display: inline-block;
     color: white;
     font-size: 25px;
-    margin: 0 12px;
+    margin-right: 15px;
 
     transition:
-        transform .25s ease,
+        scale .25s ease,
         text-shadow .25s ease;
 }
 
 .sosmed a:hover {
-    transform: scale(1.18);
+    scale: 1.18;
     text-shadow:
         0 0 8px rgba(255, 77, 166, 0.6),
         0 0 14px rgba(255, 77, 166, 0.4);
 }
 
 .center-text {
-    text-align: center;
     font-size: 18px;
     opacity: 0.9;
     color: #ff4fa1;
