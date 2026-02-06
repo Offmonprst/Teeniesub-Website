@@ -338,7 +338,7 @@ header {
 /* ================= FOOTER ================= */
 footer {
     background: #ff4da6;
-    margin-top: 990px;
+    margin-top: 40px;
     padding: 25px;
     border-radius: 20px 20px 0 0;
     position: relative;
@@ -386,6 +386,7 @@ footer h2 {
     font-size: 18px;
     opacity: 0.9;
     color: #ff4fa1;
+    font-weight: bold;
 }
 
 /* ================= KEYFRAMES ================= */
