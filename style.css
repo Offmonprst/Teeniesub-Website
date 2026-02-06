@@ -339,14 +339,14 @@ header {
 }
 
 footer {
-    width: 100vw;
+    width: 100vw;               /* 🔑 full layar */
+    margin: 40px 0 0 0;         /* hilang margin samping */
     padding: 25px 20px;
 
     background: #ff4da6;
     border-radius: 20px 20px 0 0;
 
     position: relative;
-    left: 50%;
     transform: translateX(-50%); /* 🔑 anti body padding */
 
     animation: footerUp 0.8s ease-out forwards;
