@@ -337,7 +337,7 @@ header {
 
 /* ================= FOOTER ================= */
 footer {
-    background: #ff4da6;
+    text-align: center;
     width: 100vw;
     margin: 40px 0 0 0;  
     padding: 25px;
