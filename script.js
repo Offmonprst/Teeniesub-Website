@@ -4,6 +4,11 @@ const menuBox = document.getElementById("menuBox");
 const loader = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 const gallery = document.getElementById("gallery");
+const searchBtn = document.getElementById("searchBtn");
+const closeSearch = document.getElementById("closeSearch");
+const searchBox = document.querySelector(".header-search");
+const headerTitle = document.getElementById("headerTitle");
+const searchInput = document.getElementById("searchInput");
 
 let apiData = null;
 
@@ -50,6 +55,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+searchBtn.addEventListener("click", () => {
+    searchBox.classList.add("active");
+    headerTitle.classList.add("hide");
+    searchInput.focus();
+});
+
+closeSearch.addEventListener("click", () => {
+    searchBox.classList.remove("active");
+    headerTitle.classList.remove("hide");
+    searchInput.value = "";
+    loadApis(); // reset list
+});
+
+// === SEARCH FILTER ===
+searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.toLowerCase();
+
+    if (!apiData || !apiData.gallery) return;
+
+    const filtered = apiData.gallery.filter(item =>
+        item.title.toLowerCase().includes(keyword) ||
+        item.episode.toString().includes(keyword) ||
+        item.date.toLowerCase().includes(keyword)
+    );
+
+    if (filtered.length === 0) {
+        gallery.innerHTML = `<p class="center-text">Episode tidak ditemukan</p>`;
+        return;
+    }
+
+    let html = "";
+    filtered.forEach(item => {
+        html += `
+        <a href="https://indo.teeniesubs.xyz${item.url}" class="photo-card">
+            <img src="${item.image}">
+            <h3>Eps: ${item.episode} || ${item.title}</h3>
+            <p>${item.date}</p>
+        </a>
+        `;
+    });
+
+    gallery.innerHTML = html;
+});
 // === LOADING SCREEN ===
 window.addEventListener("load", () => {
     setTimeout(() => {
