@@ -12,6 +12,52 @@ body {
     overflow-x: hidden;
 }
 
+/* ================= SEARCH HEADER ================= */
+.header-search {
+    position: absolute;
+    left: 18px;
+    right: 90px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleX(0.9);
+    transition: .25s ease;
+}
+
+.header-search.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scaleX(1);
+}
+
+.header-search input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.header-search button {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+#headerTitle.hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-20px);
+    transition: .25s ease;
+}
+
 /* ================= BUBBLE BG ================= */
 body::before {
     content: "";
