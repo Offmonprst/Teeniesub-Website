@@ -227,21 +227,39 @@ button:hover,
 
 /* ================= FOOTER ================= */
 footer {
-    background: #ff4da6;
     margin-top: 40px;
-    padding: 25px;
-    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    will-change: transform, opacity;
 }
 
 footer h2 {
     font-size: 20px;
     font-weight: 600;
+    text-align: center;
+    color: #ff4fa1;
+}
+
+.sosmed {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .sosmed a {
-    color: white;
+    color: #ff4fa1;
     font-size: 25px;
-    margin-right: 15px;
+    margin: 0 12px;
+
+    transition:
+        transform .25s ease,
+        text-shadow .25s ease;
+}
+
+.sosmed a:hover {
+    transform: scale(1.18);
+    text-shadow:
+        0 0 8px rgba(255, 77, 166, 0.6),
+        0 0 14px rgba(255, 77, 166, 0.4);
 }
 
 /* ================= PERFORMANCE ================= */
