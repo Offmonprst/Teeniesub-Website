@@ -339,9 +339,6 @@ header {
 footer {
     text-align: center;
     width: 100vw;
-    margin: 40px 0 0 0;  
-    padding: 25px;
-    border-radius: 20px 20px 0 0;
     position: relative;
     padding-bottom: 120px;
     animation: footerUp 0.8s ease-out forwards;
