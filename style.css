@@ -338,7 +338,7 @@ header {
 /* ================= FOOTER ================= */
 footer {
     background: #ff4da6;
-    margin-top: 40px;
+    margin-top: -90px;
     padding: 25px;
     border-radius: 20px 20px 0 0;
     position: relative;
