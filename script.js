@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
             console.error(err);
-            gallery.innerHTML = '<p class="center-text">Gagal memuat data episode.</p>';
+            gallery.innerHTML = '<p class="text-center text-red-400">Gagal memuat data episode.</p>';
         });
 });
 
