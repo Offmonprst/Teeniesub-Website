@@ -1,9 +1,11 @@
-// === TOGGLE MENU ===
+// ================= ELEMENT =================
 const menuBtn = document.getElementById("menuBtn");
 const menuBox = document.getElementById("menuBox");
 const loader = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 const gallery = document.getElementById("gallery");
+
+// search elements
 const searchBtn = document.getElementById("searchBtn");
 const closeSearch = document.getElementById("closeSearch");
 const searchBox = document.querySelector(".header-search");
@@ -12,20 +14,34 @@ const searchInput = document.getElementById("searchInput");
 
 let apiData = null;
 
+// ================= MENU TOGGLE =================
 menuBtn.addEventListener("click", () => {
     menuBox.classList.toggle("active");
 });
 
-// === LOAD EPISODES ===
-function loadApis() {
-    if (!apiData || !apiData.gallery || apiData.gallery.length === 0) {
-        gallery.innerHTML = '<p class="text-center text-blue-400">No data available.</p>';
+// ================= SEARCH TOGGLE =================
+searchBtn.addEventListener("click", () => {
+    searchBox.classList.add("active");
+    headerTitle.classList.add("hide");
+    searchInput.focus();
+});
+
+closeSearch.addEventListener("click", () => {
+    searchBox.classList.remove("active");
+    headerTitle.classList.remove("hide");
+    searchInput.value = "";
+    renderGallery(apiData?.gallery || []);
+});
+
+// ================= RENDER GALLERY =================
+function renderGallery(data) {
+    if (!data || data.length === 0) {
+        gallery.innerHTML = `<p class="center-text">Tidak ada episode</p>`;
         return;
     }
 
-    let html = ''; // RESET HTML
-
-    apiData.gallery.forEach(item => {
+    let html = "";
+    data.forEach(item => {
         html += `
         <a href="https://indo.teeniesubs.xyz${item.url}" class="photo-card">
             <img src="${item.image}" alt="Episode ${item.episode}">
@@ -38,37 +54,7 @@ function loadApis() {
     gallery.innerHTML = html;
 }
 
-// === FETCH JSON SAAT PAGE LOAD ===
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('/Episode.json')
-        .then(res => {
-            if (!res.ok) throw new Error('Failed to load Episode.json');
-            return res.json();
-        })
-        .then(data => {
-            apiData = data;
-            loadApis();
-        })
-        .catch(err => {
-            console.error(err);
-            gallery.innerHTML = '<p class="center-text">Gagal memuat data episode.</p>';
-        });
-});
-
-searchBtn.addEventListener("click", () => {
-    searchBox.classList.add("active");
-    headerTitle.classList.add("hide");
-    searchInput.focus();
-});
-
-closeSearch.addEventListener("click", () => {
-    searchBox.classList.remove("active");
-    headerTitle.classList.remove("hide");
-    searchInput.value = "";
-    loadApis(); // reset list
-});
-
-// === SEARCH FILTER ===
+// ================= SEARCH FILTER =================
 searchInput.addEventListener("input", () => {
     const keyword = searchInput.value.toLowerCase();
 
@@ -76,7 +62,7 @@ searchInput.addEventListener("input", () => {
 
     const filtered = apiData.gallery.filter(item =>
         item.title.toLowerCase().includes(keyword) ||
-        item.episode.toString().includes(keyword) ||
+        String(item.episode).includes(keyword) ||
         item.date.toLowerCase().includes(keyword)
     );
 
@@ -85,29 +71,44 @@ searchInput.addEventListener("input", () => {
         return;
     }
 
-    let html = "";
-    filtered.forEach(item => {
-        html += `
-        <a href="https://indo.teeniesubs.xyz${item.url}" class="photo-card">
-            <img src="${item.image}">
-            <h3>Eps: ${item.episode} || ${item.title}</h3>
-            <p>${item.date}</p>
-        </a>
-        `;
-    });
-
-    gallery.innerHTML = html;
+    renderGallery(filtered);
 });
-// === LOADING SCREEN ===
+
+// ================= FETCH EPISODE JSON =================
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("./Episode.json") // ⬅️ PENTING
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Episode.json tidak ditemukan");
+            }
+            return res.json();
+        })
+        .then(data => {
+            apiData = data;
+            renderGallery(apiData.gallery);
+        })
+        .catch(err => {
+            console.error(err);
+            gallery.innerHTML = `
+                <p class="center-text">
+                    Gagal memuat Episode.json
+                </p>
+            `;
+        });
+});
+
+// ================= LOADING SCREEN =================
 window.addEventListener("load", () => {
     setTimeout(() => {
         loader.classList.add("hide");
+
         setTimeout(() => {
             loader.style.display = "none";
             content.style.display = "block";
+
             if (location.pathname !== "/Episode") {
-		    history.pushState(null, "", "/Episode");
-			}
+                history.pushState(null, "", "/Episode");
+            }
         }, 800);
     }, 3000);
 });
