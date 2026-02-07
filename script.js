@@ -76,7 +76,7 @@ searchInput.addEventListener("input", () => {
 
 // ================= FETCH EPISODE JSON =================
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("/Episode.json") // ⬅️ PENTING
+    fetch("https://indo.teeniesubs.xyz/Episode.json") // ⬅️ PENTING
         .then(res => {
             if (!res.ok) {
                 throw new Error("Episode.json tidak ditemukan");
