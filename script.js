@@ -46,7 +46,7 @@ function renderGallery(data) {
         <a href="https://indo.teeniesubs.xyz${item.url}" class="photo-card">
             <img src="${item.image}" alt="Episode ${item.episode}">
             <h3>Eps: ${item.episode} || ${item.title}</h3>
-            <p>${item.date}</p>
+            <p>${item.series} ~ ${item.date}</p>
         </a>
         `;
     });
@@ -76,7 +76,7 @@ searchInput.addEventListener("input", () => {
 
 // ================= FETCH EPISODE JSON =================
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://teeniesub.vercel.app/Episode.json") // ⬅️ PENTING
+    fetch("/Episode.json") // ⬅️ PENTING
         .then(res => {
             if (!res.ok) {
                 throw new Error("Episode.json tidak ditemukan");
